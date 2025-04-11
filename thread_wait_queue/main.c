@@ -104,10 +104,11 @@ int __init wait_module_init(void) {
 void __exit wait_module_exit(void) {
 	if (waitqueue_active(&wait_queue)){
 		int i;
-		for (i = 0; i < 1; i++) {
+		for (i = 0; i < 2; i++) {
 	    		waker[i] = kthread_run(waker_fn, &waker_types[i], "waker thread");	
 		}
 	}
+	printk("Exiting the wait queue!\n");
 }
 
 module_init(wait_module_init);
