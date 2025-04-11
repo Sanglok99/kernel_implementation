@@ -1,0 +1,2379 @@
+cscope 15 $HOME/Documents/linux-5.4.291/my_modules/spin_lock_linked_list               0000012832
+	@animals.h
+
+1 #i‚de‡
+ANIMALS_H
+
+
+2 
+	#ANIMALS_H
+
+
+	)
+
+4 
+	~<löux/li°.h
+>
+
+6 
+	#NUM_THREADS
+ 4
+
+	)
+
+8 
+	sˇt
+ {
+
+9 
+	mv¨
+;
+
+10 
+li°_hód
+ 
+	míåy
+;
+
+13 
+	s™imÆ
+ {
+
+14 
+	mtŸÆ
+;
+
+15 
+li°_hód
+ 
+	míåy
+;
+
+16 
+•ölock_t
+ 
+	mli°_lock
+;
+
+20 
+ölöe
+ 
+	$my_INIT_LIST_HEAD
+(
+li°_hód
+ *
+li°
+)
+
+22 
+li°
+->
+√xt
+ = 
+NULL
+;
+
+23 
+li°
+->
+¥ev
+ =Üist;
+
+24 
+	}
+}
+
+	@calclock.c
+
+1 
+	~"ˇl˛ock.h
+"
+
+3 
+	$ˇl˛ock
+(
+time•ec
+ *
+my˛ock
+, *
+tŸÆ_time
+, *
+tŸÆ_cou¡
+)
+
+5 
+timedñay
+ = 0, 
+ãmp
+ = 0, 
+ãmp_n
+ = 0;
+
+6 i‡(
+my˛ock
+[1].
+tv_n£c
+ >= myclock[0].tv_nsec) {
+
+7 
+ãmp
+ = 
+my˛ock
+[1].
+tv_£c
+ - myclock[0].tv_sec;
+
+8 
+ãmp_n
+ = 
+my˛ock
+[1].
+tv_n£c
+ - myclock[0].tv_nsec;
+
+9 
+timedñay
+ = 
+BILLION
+ * 
+ãmp
+ + 
+ãmp_n
+;
+
+11 
+ãmp
+ = 
+my˛ock
+[1].
+tv_£c
+ - myclock[0].tv_sec - 1;
+
+12 
+ãmp_n
+ = 
+BILLION
+ + 
+my˛ock
+[1].
+tv_n£c
+ - myclock[0].tv_nsec;
+
+13 
+timedñay
+ = 
+BILLION
+ * 
+ãmp
+ + 
+ãmp_n
+;
+
+16 
+	`__sync_„tch_™d_add
+(
+tŸÆ_time
+, 
+timedñay
+);
+
+17 
+	`__sync_„tch_™d_add
+(
+tŸÆ_cou¡
+, 1);
+
+19  
+timedñay
+;
+
+20 
+	}
+}
+
+	@calclock.h
+
+1 #i‚de‡
+__CALCLOCK_H
+
+
+2 
+	#__CALCLOCK_H
+
+
+	)
+
+4 
+	~<löux/time.h
+>
+
+6 
+	#BILLION
+ 1000000000UL
+
+	)
+
+8 
+ˇl˛ock
+(
+time•ec
+ *
+my˛ock
+, *
+tŸÆ_time
+, *
+tŸÆ_cou¡
+);
+
+	@linked_list_impl_spin_lock.c
+
+1 
+	~<löux/moduÀ.h
+>
+
+2 
+	~<löux/kî√l.h
+>
+
+3 
+	~<löux/kthªad.h
+>
+
+4 
+	~<löux/dñay.h
+>
+
+5 
+	~<löux/¶ab.h
+>
+
+6 
+	~<löux/li°.h
+>
+
+7 
+	~<löux/•ölock.h
+>
+
+8 
+	~<löux/time.h
+>
+
+9 
+	~<löux/øndom.h
+>
+
+10 
+	~"™imÆs.h
+"
+
+11 
+	~"ˇl˛ock.h
+"
+
+13 
+	#li°_f‹_óch_n⁄_cúcuœr
+(
+pos
+, 
+hód
+) \
+
+14 
+pos
+ = (
+hód
+)->
+√xt
+;Öo†!
+NULL
+;Öo†pos->√xt)
+
+	)
+
+17 
+	gadd_to_li°_time
+ = 0;
+
+18 
+	g£¨ch_li°_time
+ = 0;
+
+19 
+	gdñëe_‰om_li°_time
+ = 0;
+
+22 
+	gadd_to_li°_cou¡
+ = 0;
+
+23 
+	g£¨ch_li°_cou¡
+ = 0;
+
+24 
+	gdñëe_‰om_li°_cou¡
+ = 0;
+
+26 
+ölöe
+ 
+__li°_my_dñ
+(
+li°_hód
+ *
+¥ev
+, li°_hód *
+√xt
+, li°_hód *
+hód
+);
+
+28 
+ölöe
+ 
+my_li°_dñ
+(
+li°_hód
+ *
+íåy
+, li°_hód *
+hód
+);
+
+31 
+	smy_node
+ {
+
+32 
+	md©a
+;
+
+33 
+li°_hód
+ 
+	míåy
+;
+
+37 
+LIST_HEAD
+(
+my_li°
+);
+
+40 
+	$£t_ôî_ønge
+(
+thªad_id
+, 
+ønge
+[2]) {
+
+41 
+tŸÆ
+ = 1000000;
+
+42 
+chunk
+ = 
+tŸÆ
+ / 4;
+
+43 
+ønge
+[0] = 
+thªad_id
+ * 
+chunk
+;
+
+44 
+ønge
+[1] = (
+thªad_id
+ + 1Ë* 
+chunk
+ - 1;
+
+45 
+	}
+}
+
+48 
+ölöe
+ 
+	$my_li°_add_èû
+(
+li°_hód
+ *
+íåy
+, li°_hód *
+hód
+){
+
+49 
+íåy
+->
+¥ev
+ = 
+	`__sync_lock_ã°_™d_£t
+(&
+hód
+->prev,Éntry);
+
+50 if(
+íåy
+->
+¥ev
+ =
+NULL
+)
+
+51 
+hód
+ = 
+íåy
+;
+
+53 
+íåy
+->
+¥ev
+->
+√xt
+ =Éntry;
+
+54 
+	}
+}
+
+56 
+	$add_to_li°
+(
+thªad_id
+, 
+ønge_bound
+[])
+
+58 
+ˇt
+ *
+√w
+ = 
+	`kmÆloc
+((*√w), 
+GFP_KERNEL
+);
+
+59 i‡(!
+√w
+) ;
+
+61 
+√w
+->
+v¨
+ = 
+	`£À˘_èrgë_ödex
+(
+ønge_bound
+);
+
+62 
+	`my_INIT_LIST_HEAD
+(&
+√w
+->
+íåy
+);
+
+64 
+	`gëøwm⁄Ÿ⁄ic
+(&
+loˇl˛ock
+[0]);
+
+65 
+	`•ö_lock
+(&
+hód
+->
+li°_lock
+);
+
+66 
+	`my_li°_add_èû
+(&
+√w
+->
+íåy
+, &
+hód
+->entry);
+
+67 
+hód
+->
+tŸÆ
+++;
+
+68 
+	`•ö_u∆ock
+(&
+hód
+->
+li°_lock
+);
+
+69 
+	`gëøwm⁄Ÿ⁄ic
+(&
+loˇl˛ock
+[1]);
+
+71 
+	`ˇl˛ock
+(
+loˇl˛ock
+, &
+add_to_li°_time
+, &
+add_to_li°_cou¡
+);
+
+72 
+	}
+}
+
+74 
+	$£À˘_èrgë_ödex
+(
+ønge_bound
+[2])
+
+76 
+ønd
+;
+
+77 
+	`gë_øndom_byãs
+(&
+ønd
+, (rand));
+
+79 
+low
+ = 
+ønge_bound
+[0];
+
+80 
+high
+ = 
+ønge_bound
+[1];
+
+82 i‡(
+low
+ >
+high
+)
+
+83  
+low
+;
+
+85  
+low
+ + (
+ønd
+ % (
+high
+ -Üow + 1));
+
+86 
+	}
+}
+
+89 
+dñëe_‰om_li°
+(
+thªad_id
+, 
+iˇl˛ock
+(
+loˇl˛ock
+, &
+add_to_li°_time
+, &
+add_to_li°_cou¡
+);
+¡
+ 
+ønge_bound
+[])
+
+91 
+li°_hód
+ *
+	gíåy
+;
+
+92 
+ˇt
+ *
+	gcur
+;
+
+93 
+	gèrgë
+ = 
+£À˘_èrgë_ödex
+(
+ønge_bound
+);
+
+95 
+•ö_lock
+(&
+hód
+->
+lock
+);
+
+96 
+li°_f‹_óch_n⁄_cúcuœr
+(
+íåy
+, &
+hód
+->entry) {
+
+97 
+gëøwm⁄Ÿ⁄ic
+(&
+loˇl˛ock
+[0]);
+
+98 
+	gcur
+ = 
+li°_íåy
+(
+íåy
+, 
+ˇt
+,Éntry);
+
+99 i‡(
+	gcur
+->
+	gv¨
+ =
+èrgë
+) {
+
+100 
+my_li°_dñ
+(&
+cur
+->
+íåy
+);
+
+101 
+k‰ì
+(
+cur
+);
+
+102 
+	ghód
+->
+	gtŸÆ
+--;
+
+105 
+gëøwm⁄Ÿ⁄ic
+(&
+loˇl˛ock
+[1]);
+
+106 
+ˇl˛ock
+(
+loˇl˛ock
+, &
+dñëe_‰om_li°_time
+, &
+dñëe_‰om_li°_cou¡
+);
+
+108 
+•ö_u∆ock
+(&
+hód
+->
+lock
+);
+
+112 
+	$£¨ch_li°
+(
+thªad_id
+, 
+ønge_bound
+[])
+
+114 
+li°_hód
+ *
+íåy
+;
+
+115 
+ˇt
+ *
+cur
+;
+
+116 
+èrgë
+ = 
+	`£À˘_èrgë_ödex
+(
+ønge_bound
+);
+
+118 
+	`•ö_lock
+(&
+hód
+->
+lock
+);
+
+119 
+	`li°_f‹_óch_n⁄_cúcuœr
+(
+íåy
+, &
+hód
+->entry) {
+
+120 
+	`gëøwm⁄Ÿ⁄ic
+(&
+loˇl˛ock
+[0]);
+
+121 
+cur
+ = 
+	`li°_íåy
+(
+íåy
+, 
+ˇt
+,Éntry);
+
+122 i‡(
+cur
+->
+v¨
+ =
+èrgë
+) {
+
+123 
+	`•ö_u∆ock
+(&
+hód
+->
+lock
+);
+
+126 
+	`gëøwm⁄Ÿ⁄ic
+(&
+loˇl˛ock
+[1]);
+
+127 
+	`ˇl˛ock
+(
+loˇl˛ock
+, &
+£¨ch_li°_time
+, &
+£¨ch_li°_cou¡
+);
+
+129 
+	`•ö_u∆ock
+(&
+hód
+->
+lock
+);
+
+130 
+	}
+}
+
+133 
+	$w‹k_‚
+(*
+d©a
+)
+
+135 
+ønge_bound
+[2];
+
+136 
+îr
+, 
+thªad_id
+ = *(*Ë
+d©a
+;
+
+138 
+	`£t_ôî_ønge
+(
+thªad_id
+, 
+ønge_bound
+);
+
+139 
+	`add_to_li°
+(
+thªad_id
+, 
+ønge_bound
+);
+
+140 
+îr
+ = 
+	`£¨ch_li°
+(
+thªad_id
+, 
+ønge_bound
+);
+
+141 i‡(!
+îr
+)
+
+142 
+	`dñëe_‰om_li°
+(
+thªad_id
+, 
+ønge_bound
+);
+
+144 !
+	`kthªad_should_°›
+()) {
+
+145 
+	`m¶ìp
+(500);
+
+147 
+	`¥ötk
+(
+KERN_INFO
+ "thªad #%d st›≥d!\n", 
+thªad_id
+);
+
+150 
+	}
+}
+
+	@linked_list_main_spin_lock.c
+
+1 
+	~<löux/moduÀ.h
+>
+
+2 
+	~<löux/kî√l.h
+>
+
+3 
+	~<löux/kthªad.h
+>
+
+4 
+	~<löux/öô.h
+>
+
+5 
+	~<löux/dñay.h
+>
+
+6 
+	~<löux/¶ab.h
+>
+
+8 
+	~"™imÆs.h
+"
+
+10 
+™imÆ
+ *
+	ghód
+;
+
+11 
+èsk_°ru˘
+ *
+	gthªads
+[
+NUM_THREADS
+];
+
+14 
+add_to_li°_time
+;
+
+15 
+£¨ch_li°_time
+;
+
+16 
+dñëe_‰om_li°_time
+;
+
+19 
+add_to_li°_cou¡
+;
+
+20 
+£¨ch_li°_cou¡
+;
+
+21 
+dñëe_‰om_li°_cou¡
+;
+
+23 
+w‹k_‚
+(*
+d©a
+);
+
+25 
+__öô
+ 
+	$lock‰ì_moduÀ_öô
+() {
+
+26 
+	`¥ötk
+(
+KERN_INFO
+ "%s: E¡îög Lock-‰ì ModuÀ!\n", 
+__func__
+);
+
+30 
+hód
+ = 
+	`kmÆloc
+((
+™imÆ
+), 
+GFP_KERNEL
+);
+
+31 i‡(!
+hód
+) {
+
+32 
+	`¥_îr
+("FailedÅoállocate memory foránimal head.\n");
+
+33  -
+ENOMEM
+;
+
+37 
+hód
+->
+tŸÆ
+ = 0;
+
+40 
+	`my_INIT_LIST_HEAD
+(&
+hód
+->
+íåy
+);
+
+43 
+i
+;
+
+44 
+i
+ = 0; i < 
+NUM_THREADS
+; i++) {
+
+45 *
+id
+ = 
+	`kmÆloc
+((), 
+GFP_KERNEL
+);
+
+46 if(!
+id
+) {
+
+47 
+	`¥_îr
+("FaûedÅÿÆloˇã mem‹y f‹Åhªad id %d\n", 
+i
+);
+
+51 *
+id
+ = 
+i
+;
+
+52 
+thªads
+[
+i
+] = 
+	`kthªad_¸óã
+(
+w‹k_‚
+, 
+id
+, "list_thread_%d", i);
+
+53 i‡(
+	`IS_ERR
+(
+thªads
+[
+i
+])) {
+
+54 
+	`¥_îr
+("FaûedÅÿ¸óãÅhªad %d\n",
+i
+);
+
+55 
+	`k‰ì
+(
+id
+);
+
+56 
+thªads
+[
+i
+] = 
+NULL
+;
+
+58 
+	`wake_up_¥o˚ss
+(
+thªads
+[
+i
+]);
+
+63 
+	}
+}
+
+65 
+ölöe
+ 
+
+66 
+	$__li°_my_dñ
+(
+li°_hód
+ *
+¥ev
+, li°_hód *
+√xt
+, li°_hód *
+hód
+)
+
+68 i‡(
+√xt
+)
+
+69 
+√xt
+->
+¥ev
+ =Örev;
+
+71 
+hód
+->
+¥ev
+ =Örev;
+
+73 
+¥ev
+->
+√xt
+ =Çext;
+
+74 
+	}
+}
+
+76 
+ölöe
+ 
+
+77 
+	$my_li°_dñ
+(
+li°_hód
+ *
+íåy
+, li°_hód *
+hód
+)
+
+79 
+	`__li°_my_dñ
+(
+íåy
+->
+¥ev
+,É¡ry->
+√xt
+, 
+hód
+);
+
+80 
+	}
+}
+
+82 
+	$de°roy_li°
+()
+
+84 
+ˇt
+ *
+cur
+;
+
+85 
+li°_hód
+ *
+íåy
+, *
+ôî
+ = &
+hód
+->entry;
+
+89 (
+íåy
+ = 
+ôî
+Ë!
+NULL
+) {
+
+90 
+ôî
+ = iãr->
+√xt
+;
+
+93 i‡(!
+íåy
+->
+¥ev
+->
+√xt
+)
+
+96 
+cur
+ = 
+	`li°_íåy
+(
+íåy
+, 
+ˇt
+,Éntry);
+
+99 
+	`my_li°_dñ
+(&
+cur
+->
+íåy
+, &
+hód
+->entry);
+
+102 
+	`k‰ì
+(
+cur
+);
+
+106 
+hód
+->
+tŸÆ
+ = 0;
+
+107 
+	}
+}
+
+109 
+__exô
+ 
+	$lock‰ì_moduÀ_˛ónup
+() {
+
+111 
+	`¥ötk
+(
+KERN_INFO
+ "SpölockÜökedÜi° in£πÅime: %ŒdÇs, cou¡: %Œd\n", 
+add_to_li°_time
+, 
+add_to_li°_cou¡
+);
+
+112 
+	`¥ötk
+(
+KERN_INFO
+ "SpölockÜökedÜi° sórchÅime: %ŒdÇs, cou¡: %Œd\n", 
+£¨ch_li°_time
+, 
+£¨ch_li°_cou¡
+);
+
+113 
+	`¥ötk
+(
+KERN_INFO
+ "SpölockÜökedÜi° dñëêtime: %ŒdÇs, cou¡: %Œd\n", 
+dñëe_‰om_li°_time
+, 
+dñëe_‰om_li°_cou¡
+);
+
+116 
+i
+;
+
+117 
+i
+ = 0; i < 
+NUM_THREADS
+; i++) {
+
+118 i‡(
+thªads
+[
+i
+])
+
+119 
+	`kthªad_°›
+(
+thªads
+[
+i
+]);
+
+122 
+	`de°roy_li°
+();
+
+123 
+	`¥ötk
+("A·î de°royedÜi°:ÅŸÆ %d c©s\n", 
+hód
+->
+tŸÆ
+);
+
+124 
+	`k‰ì
+(
+hód
+);
+
+126 
+	`¥ötk
+(
+KERN_INFO
+ "%s: Exôög Lock-‰ì ModuÀ!\n", 
+__func__
+);
+
+127 
+	}
+}
+
+129 
+moduÀ_öô
+(
+lock‰ì_moduÀ_öô
+);
+
+130 
+moduÀ_exô
+(
+lock‰ì_moduÀ_˛ónup
+);
+
+132 
+MODULE_LICENSE
+("GPL");
+
+	@/usr/include/linux/kernel.h
+
+2 #i‚de‡
+_LINUX_KERNEL_H
+
+
+3 
+	#_LINUX_KERNEL_H
+
+
+	)
+
+5 
+	~<löux/sysöfo.h
+>
+
+6 
+	~<löux/c⁄°.h
+>
+
+	@/usr/include/linux/module.h
+
+2 #i‚de‡
+_LINUX_MODULE_H
+
+
+3 
+	#_LINUX_MODULE_H
+
+
+	)
+
+6 
+	#MODULE_INIT_IGNORE_MODVERSIONS
+ 1
+
+	)
+
+7 
+	#MODULE_INIT_IGNORE_VERMAGIC
+ 2
+
+	)
+
+	@/usr/include/linux/random.h
+
+8 #i‚de‡
+_LINUX_RANDOM_H
+
+
+9 
+	#_LINUX_RANDOM_H
+
+
+	)
+
+11 
+	~<löux/ty≥s.h
+>
+
+12 
+	~<löux/io˘l.h
+>
+
+13 
+	~<löux/úqƒ.h
+>
+
+18 
+	#RNDGETENTCNT
+ 
+	`_IOR
+–'R', 0x00, )
+
+	)
+
+21 
+	#RNDADDTOENTCNT
+ 
+	`_IOW
+–'R', 0x01, )
+
+	)
+
+24 
+	#RNDGETPOOL
+ 
+	`_IOR
+–'R', 0x02, [2] )
+
+	)
+
+30 
+	#RNDADDENTROPY
+ 
+	`_IOW
+–'R', 0x03, [2] )
+
+	)
+
+33 
+	#RNDZAPENTCNT
+ 
+	`_IO
+–'R', 0x04 )
+
+	)
+
+36 
+	#RNDCLEARPOOL
+ 
+	`_IO
+–'R', 0x06 )
+
+	)
+
+39 
+	#RNDRESEEDCRNG
+ 
+	`_IO
+–'R', 0x07 )
+
+	)
+
+41 
+	sønd_poﬁ_öfo
+ {
+
+42 
+	míå›y_cou¡
+;
+
+43 
+	mbuf_size
+;
+
+44 
+__u32
+ 
+	mbuf
+[0];
+
+54 
+	#GRND_NONBLOCK
+ 0x0001
+
+	)
+
+55 
+	#GRND_RANDOM
+ 0x0002
+
+	)
+
+56 
+	#GRND_INSECURE
+ 0x0004
+
+	)
+
+	@/usr/include/linux/time.h
+
+2 #i‚de‡
+_LINUX_TIME_H
+
+
+3 
+	#_LINUX_TIME_H
+
+
+	)
+
+5 
+	~<löux/ty≥s.h
+>
+
+6 
+	~<löux/time_ty≥s.h
+>
+
+8 #i‚de‡
+_STRUCT_TIMESPEC
+
+
+9 
+	#_STRUCT_TIMESPEC
+
+
+	)
+
+10 
+	stime•ec
+ {
+
+11 
+__kî√l_time_t
+ 
+	mtv_£c
+;
+
+12 
+	mtv_n£c
+;
+
+16 
+	stimevÆ
+ {
+
+17 
+__kî√l_time_t
+ 
+	mtv_£c
+;
+
+18 
+__kî√l_su£c⁄ds_t
+ 
+	mtv_u£c
+;
+
+21 
+	stimez⁄e
+ {
+
+22 
+	mtz_möuãswe°
+;
+
+23 
+	mtz_d°time
+;
+
+30 
+	#ITIMER_REAL
+ 0
+
+	)
+
+31 
+	#ITIMER_VIRTUAL
+ 1
+
+	)
+
+32 
+	#ITIMER_PROF
+ 2
+
+	)
+
+34 
+	sôimî•ec
+ {
+
+35 
+time•ec
+ 
+	mô_öãrvÆ
+;
+
+36 
+time•ec
+ 
+	mô_vÆue
+;
+
+39 
+	sôimîvÆ
+ {
+
+40 
+timevÆ
+ 
+	mô_öãrvÆ
+;
+
+41 
+timevÆ
+ 
+	mô_vÆue
+;
+
+47 
+	#CLOCK_REALTIME
+ 0
+
+	)
+
+48 
+	#CLOCK_MONOTONIC
+ 1
+
+	)
+
+49 
+	#CLOCK_PROCESS_CPUTIME_ID
+ 2
+
+	)
+
+50 
+	#CLOCK_THREAD_CPUTIME_ID
+ 3
+
+	)
+
+51 
+	#CLOCK_MONOTONIC_RAW
+ 4
+
+	)
+
+52 
+	#CLOCK_REALTIME_COARSE
+ 5
+
+	)
+
+53 
+	#CLOCK_MONOTONIC_COARSE
+ 6
+
+	)
+
+54 
+	#CLOCK_BOOTTIME
+ 7
+
+	)
+
+55 
+	#CLOCK_REALTIME_ALARM
+ 8
+
+	)
+
+56 
+	#CLOCK_BOOTTIME_ALARM
+ 9
+
+	)
+
+61 
+	#CLOCK_SGI_CYCLE
+ 10
+
+	)
+
+62 
+	#CLOCK_TAI
+ 11
+
+	)
+
+64 
+	#MAX_CLOCKS
+ 16
+
+	)
+
+65 
+	#CLOCKS_MASK
+ (
+CLOCK_REALTIME
+ | 
+CLOCK_MONOTONIC
+)
+
+	)
+
+66 
+	#CLOCKS_MONO
+ 
+CLOCK_MONOTONIC
+
+
+	)
+
+71 
+	#TIMER_ABSTIME
+ 0x01
+
+	)
+
+	@/usr/include/linux/const.h
+
+4 #i‚de‡
+_LINUX_CONST_H
+
+
+5 
+	#_LINUX_CONST_H
+
+
+	)
+
+16 #ifde‡
+__ASSEMBLY__
+
+
+17 
+	#_AC
+(
+X
+,
+Y
+Ë
+	)
+X
+
+18 
+	#_AT
+(
+T
+,
+X
+Ë
+	)
+X
+
+20 
+	#__AC
+(
+X
+,
+Y
+Ë(X##Y)
+
+	)
+
+21 
+	#_AC
+(
+X
+,
+Y
+Ë
+	`__AC
+(X,Y)
+
+	)
+
+22 
+	#_AT
+(
+T
+,
+X
+Ë((T)(X))
+
+	)
+
+25 
+	#_UL
+(
+x
+Ë(
+	`_AC
+(x, 
+UL
+))
+
+	)
+
+26 
+	#_ULL
+(
+x
+Ë(
+	`_AC
+(x, 
+ULL
+))
+
+	)
+
+28 
+	#_BITUL
+(
+x
+Ë(
+	`_UL
+(1Ë<< (x))
+
+	)
+
+29 
+	#_BITULL
+(
+x
+Ë(
+	`_ULL
+(1Ë<< (x))
+
+	)
+
+31 
+	#__ALIGN_KERNEL
+(
+x
+, 
+a
+Ë
+	`__ALIGN_KERNEL_MASK
+(x, (
+	`__ty≥of__
+(x))◊Ë- 1)
+
+	)
+
+32 
+	#__ALIGN_KERNEL_MASK
+(
+x
+, 
+mask
+Ë(((xË+ (mask)Ë& ~(mask))
+
+	)
+
+34 
+	#__KERNEL_DIV_ROUND_UP
+(
+n
+, 
+d
+Ë((“Ë+ (dË- 1Ë/ (d))
+
+	)
+
+	@/usr/include/linux/ioctl.h
+
+2 #i‚de‡
+_LINUX_IOCTL_H
+
+
+3 
+	#_LINUX_IOCTL_H
+
+
+	)
+
+5 
+	~<asm/io˘l.h
+>
+
+	@/usr/include/linux/irqnr.h
+
+	@/usr/include/linux/sysinfo.h
+
+2 #i‚de‡
+_LINUX_SYSINFO_H
+
+
+3 
+	#_LINUX_SYSINFO_H
+
+
+	)
+
+5 
+	~<löux/ty≥s.h
+>
+
+7 
+	#SI_LOAD_SHIFT
+ 16
+
+	)
+
+8 
+	ssysöfo
+ {
+
+9 
+__kî√l_l⁄g_t
+ 
+	mu±ime
+;
+
+10 
+__kî√l_ul⁄g_t
+ 
+	mlﬂds
+[3];
+
+11 
+__kî√l_ul⁄g_t
+ 
+	mtŸÆøm
+;
+
+12 
+__kî√l_ul⁄g_t
+ 
+	m‰ìøm
+;
+
+13 
+__kî√l_ul⁄g_t
+ 
+	msh¨edøm
+;
+
+14 
+__kî√l_ul⁄g_t
+ 
+	mbuf„ºam
+;
+
+15 
+__kî√l_ul⁄g_t
+ 
+	mtŸÆsw≠
+;
+
+16 
+__kî√l_ul⁄g_t
+ 
+	m‰ìsw≠
+;
+
+17 
+__u16
+ 
+	m¥ocs
+;
+
+18 
+__u16
+ 
+	m∑d
+;
+
+19 
+__kî√l_ul⁄g_t
+ 
+	mtŸÆhigh
+;
+
+20 
+__kî√l_ul⁄g_t
+ 
+	m‰ìhigh
+;
+
+21 
+__u32
+ 
+	mmem_unô
+;
+
+22 
+	m_f
+[20-2*(
+__kî√l_ul⁄g_t
+)-(
+__u32
+)];
+
+	@/usr/include/linux/time_types.h
+
+2 #i‚de‡
+_LINUX_TIME_TYPES_H
+
+
+3 
+	#_LINUX_TIME_TYPES_H
+
+
+	)
+
+5 
+	~<löux/ty≥s.h
+>
+
+7 
+	s__kî√l_time•ec
+ {
+
+8 
+__kî√l_time64_t
+ 
+	mtv_£c
+;
+
+9 
+	mtv_n£c
+;
+
+12 
+	s__kî√l_ôimî•ec
+ {
+
+13 
+__kî√l_time•ec
+ 
+	mô_öãrvÆ
+;
+
+14 
+__kî√l_time•ec
+ 
+	mô_vÆue
+;
+
+24 #i‚de‡
+__kî√l_ﬁd_timevÆ
+
+
+25 
+	s__kî√l_ﬁd_timevÆ
+ {
+
+26 
+__kî√l_l⁄g_t
+ 
+	mtv_£c
+;
+
+27 
+__kî√l_l⁄g_t
+ 
+	mtv_u£c
+;
+
+31 
+	s__kî√l_sock_timevÆ
+ {
+
+32 
+__s64
+ 
+	mtv_£c
+;
+
+33 
+__s64
+ 
+	mtv_u£c
+;
+
+	@/usr/include/linux/types.h
+
+2 #i‚de‡
+_LINUX_TYPES_H
+
+
+3 
+	#_LINUX_TYPES_H
+
+
+	)
+
+5 
+	~<asm/ty≥s.h
+>
+
+7 #i‚de‡
+__ASSEMBLY__
+
+
+9 
+	~<löux/posix_ty≥s.h
+>
+
+17 #ifde‡
+__CHECKER__
+
+
+18 
+	#__bôwi£__
+ 
+	`__©åibuã__
+((
+bôwi£
+))
+
+	)
+
+20 
+	#__bôwi£__
+
+
+	)
+
+22 
+	#__bôwi£
+ 
+__bôwi£__
+
+
+	)
+
+24 
+__u16
+ 
+	t__bôwi£
+ 
+	t__À16
+;
+
+25 
+__u16
+ 
+	t__bôwi£
+ 
+	t__be16
+;
+
+26 
+__u32
+ 
+	t__bôwi£
+ 
+	t__À32
+;
+
+27 
+__u32
+ 
+	t__bôwi£
+ 
+	t__be32
+;
+
+28 
+__u64
+ 
+	t__bôwi£
+ 
+	t__À64
+;
+
+29 
+__u64
+ 
+	t__bôwi£
+ 
+	t__be64
+;
+
+31 
+__u16
+ 
+	t__bôwi£
+ 
+	t__sum16
+;
+
+32 
+__u32
+ 
+	t__bôwi£
+ 
+	t__wsum
+;
+
+43 
+	#__Æig√d_u64
+ 
+__u64
+ 
+	`__©åibuã__
+((
+	`Æig√d
+(8)))
+
+	)
+
+44 
+	#__Æig√d_be64
+ 
+__be64
+ 
+	`__©åibuã__
+((
+	`Æig√d
+(8)))
+
+	)
+
+45 
+	#__Æig√d_À64
+ 
+__À64
+ 
+	`__©åibuã__
+((
+	`Æig√d
+(8)))
+
+	)
+
+47 
+	t__bôwi£
+ 
+	t__pﬁl_t
+;
+
+	@/usr/include/linux/posix_types.h
+
+2 #i‚de‡
+_LINUX_POSIX_TYPES_H
+
+
+3 
+	#_LINUX_POSIX_TYPES_H
+
+
+	)
+
+5 
+	~<löux/°ddef.h
+>
+
+22 #unde‡
+__FD_SETSIZE
+
+
+23 
+	#__FD_SETSIZE
+ 1024
+
+	)
+
+26 
+	mfds_bôs
+[
+__FD_SETSIZE
+ / (8 * ())];
+
+27 } 
+	t__kî√l_fd_£t
+;
+
+30 (*
+	t__kî√l_sigh™dÀr_t
+)();
+
+33 
+	t__kî√l_key_t
+;
+
+34 
+	t__kî√l_mqd_t
+;
+
+36 
+	~<asm/posix_ty≥s.h
+>
+
+	@/usr/include/linux/stddef.h
+
+4 #i‚de‡
+__Æways_ölöe
+
+
+5 
+	#__Æways_ölöe
+ 
+__ölöe__
+
+
+	)
+
+18 
+	#__DECLARE_FLEX_ARRAY
+(
+TYPE
+, 
+NAME
+) \
+
+20 °ru˘ { } 
+__em±y_
+ ## 
+NAME
+; \
+
+21 
+TYPE
+ 
+NAME
+[]; \
+
+22 }
+
+	)
+
+	@
+1
+.
+1
+/usr/include
+17
+430
+animals.h
+calclock.c
+calclock.h
+linked_list_impl_spin_lock.c
+linked_list_main_spin_lock.c
+/usr/include/linux/kernel.h
+/usr/include/linux/module.h
+/usr/include/linux/random.h
+/usr/include/linux/time.h
+/usr/include/linux/const.h
+/usr/include/linux/ioctl.h
+/usr/include/linux/irqnr.h
+/usr/include/linux/sysinfo.h
+/usr/include/linux/time_types.h
+/usr/include/linux/types.h
+/usr/include/linux/posix_types.h
+/usr/include/linux/stddef.h
