@@ -121,12 +121,10 @@ int search_list(int thread_id, int range_bound[])
 	struct timespec localclock[2];
 	int target_idx = select_target_index(range_bound);
 
-
+	getrawmonotonic(&localclock[0]);
 	spin_lock(&head->list_lock);
 	list_for_each_safe(entry, tmp, &head->entry) {
 		cur = list_entry(entry, struct cat, entry);
-
-		getrawmonotonic(&localclock[0]);
 
 		if (cur->var == target_idx) {
 			printk(KERN_INFO "Thread #%d found cat #%d!\n", thread_id, cur->var);
