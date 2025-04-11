@@ -114,65 +114,16 @@ void delete_from_list(int thread_id, int range_bound[])
 	printk(KERN_INFO "thread #%d: deleted cat #%d-%d, total: %d cats\n", thread_id, start, end, head->total);
 }
 
-
-/*
-// 삭제
-void delete_from_list(int thread_id, icalclock(localclock, &add_to_list_time, &add_to_list_count);nt range_bound[])
-{
-    	struct list_head *entry;
-    	struct cat *cur;
-    	int target = select_target_index(range_bound);
-
-    	spin_lock(&head->lock);
-list_for_each_safe(    	list_for_each_non_circular(entry, &head->entry) {
-		getrawmonotonic(&localclock[0]);
-        	cur = list_entry(entry, struct cat, entry);
-        	if (cur->var == target) {
-            		my_list_del(&cur->entry);
-            		kfree(cur);
-            		head->total--;
-            		break;
-        	}
-		getrawmonotonic(&localclock[1]);
-		calclock(localclock, &delete_from_list_time, &delete_from_list_count);
-    	}	
-    	spin_unlock(&head->lock);
-}
-*/
-
-/*
-// 검색
-void search_list(int thread_id, int range_bound[])
-{
-    	struct list_head *entry;
-    	struct cat *cur;
-    	int target = select_target_index(range_bound);
-
-    	spin_lock(&head->lock);
-    	list_for_each_non_circular(entry, &head->entry) {
-		getrawmonotonic(&localclock[0]);
-        	cur = list_entry(entry, struct cat, entry);
-        	if (cur->var == target) {
-            		spin_unlock(&head->lock);
-            		return;
-        	}
-		getrawmonotonic(&localclock[1]);
-		calclock(localclock, &search_list_time, &search_list_count);
-    	}
-    	spin_unlock(&head->lock);
-}
-*/
-
 int search_list(int thread_id, int range_bound[])
 {
-    	struct list_head *entry;
-   	struct cat *cur;
-    	struct timespec localclock[2];
-    	int target_idx = select_target_index(range_bound);
+	struct list_head *entry, *tmp;
+	struct cat *cur;
+	struct timespec localclock[2];
+	int target_idx = select_target_index(range_bound);
 
-	
-		spin_lock(&head->list_lock);
-	list_for_each_non_circular(entry, &head->entry) {
+
+	spin_lock(&head->list_lock);
+	list_for_each_safe(entry, tmp, &head->entry) {
 		cur = list_entry(entry, struct cat, entry);
 
 		getrawmonotonic(&localclock[0]);
@@ -188,10 +139,10 @@ int search_list(int thread_id, int range_bound[])
 		}
 
 	}
-		spin_unlock(&head->list_lock);
-		getrawmonotonic(&localclock[1]);
-		calclock(localclock, &search_list_time, &search_list_count);
-    	return -ENODATA;
+	spin_unlock(&head->list_lock);
+	getrawmonotonic(&localclock[1]);
+	calclock(localclock, &search_list_time, &search_list_count);
+	return -ENODATA;
 }
 
 
