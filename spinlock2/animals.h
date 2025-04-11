@@ -4,7 +4,7 @@
 #include <linux/list.h>
 #include <linux/spinlock.h>
 
-#define NUM_THREADS 1 // test
+#define NUM_THREADS 4 // test
 
 struct cat {
     int var;
