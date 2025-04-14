@@ -23,7 +23,7 @@ extern long long delete_from_list_count;
 extern int work_fn(void *data);
 
 static int __init lockfree_module_init(void) {
-        printk(KERN_INFO "%s: Entering Lock-free Module!\n", __func__);
+        printk(KERN_INFO "%s: Entering Spinlock Module!\n", __func__);
 
         /* initialize struct animal here */
         // 동물 컨테이너인 head를 커널 힙에 동적 할당
